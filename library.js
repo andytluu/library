@@ -21,7 +21,11 @@ function addBookToLibrary(){
 
 function displayBook(){
     for(let book of myLibrary){
-        display.innerText += book + " ";
+        let newBook = document.createElement("div");
+        newBook.classList.add("display-books");
+        newBook.innerText += book;
+        display.appendChild(newBook);
+        
     }
 }
 

@@ -1,6 +1,7 @@
 const myLibrary =["GOT","Dragon","Code Geass"];
 const display = document.querySelector("#display");
-
+const add = document.querySelector("#add");
+const form = document.querySelector("#book-form");
 function Book(title,author,pages,read) {
     this.title = title;
     this.author = author;
@@ -18,6 +19,9 @@ function Book(title,author,pages,read) {
 function addBookToLibrary(){
 
 }
+function showForm(){
+    form.style.display = "block";
+}
 
 function displayBook(){
     for(let book of myLibrary){
@@ -30,3 +34,4 @@ function displayBook(){
 }
 
 displayBook();
+add.addEventListener("click",showForm)

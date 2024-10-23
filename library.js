@@ -45,7 +45,7 @@ function displayBook(){
     for(let book of myLibrary){
         let newBook = document.createElement("div");
         newBook.classList.add("display-books");
-        newBook.innerText += book;
+        newBook.innerText += book.title + book.author + book.pages + book.read;
         display.appendChild(newBook);
         
     }

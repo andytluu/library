@@ -19,7 +19,6 @@ const myLibrary =[{
 const display = document.querySelector("#display");
 const add = document.querySelector("#add");
 const form = document.querySelector("#book-form");
-const formButton = document.querySelector("#form-button");
 const bookTitle = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
@@ -41,7 +40,11 @@ function Book(title,author,pages,read) {
 }
 
 function addBookToLibrary(){
-    
+    let read = checkRadio();
+    myLibrary.push(new Book(bookTitle.value,author.value,
+        pages.value,read));
+    resetForm();
+    console.log(myLibrary);
 }
 function showForm(){
     form.style.display = "block";
@@ -56,14 +59,23 @@ function displayBook(){
         
     }
 }
-function testRadio(){
+
+function checkRadio(){
     if(yes.checked){
-        console.log(yes.value);
+        return yes.value;
     }
     if(no.checked){
-        console.log(no.value);
+        return no.value;
     }
+}
+
+function resetForm(){
+    bookTitle.value = "";
+    author.value = "";
+    pages.value = "";
+    yes.checked = false;
+    no.checked = false;
 }
 displayBook();
 add.addEventListener("click",showForm);
-formBtn.addEventListener("click",testRadio);
+formBtn.addEventListener("click",addBookToLibrary);

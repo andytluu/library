@@ -44,13 +44,19 @@ function addBookToLibrary(){
     myLibrary.push(new Book(bookTitle.value,author.value,
         pages.value,read));
     resetForm();
+    hidForm();
+    displayBook();
     console.log(myLibrary);
 }
 function showForm(){
     form.style.display = "block";
 }
 
+function hidForm(){
+    form.style.display = "none";
+}
 function displayBook(){
+    display.textContent ="";
     for(let book of myLibrary){
         let newBook = document.createElement("div");
         newBook.classList.add("display-books");

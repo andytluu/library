@@ -1,21 +1,5 @@
-const myLibrary =[{
-    title:"GOT",
-    author:"G.R.Martin",
-    pages:200,
-    read:"yes"
-},
-{
-    title:"Aragon",
-    author:"Dragon guy",
-    pages:150,
-    read:"no",
-},
-{
-    title:"Dune",
-    author:"Sand guy",
-    pages:300,
-    read:"yes",
-}];
+let id  = 0;
+const myLibrary = [];
 const display = document.querySelector("#display");
 const add = document.querySelector("#add");
 const form = document.querySelector("#book-form");
@@ -47,6 +31,7 @@ function addBookToLibrary(){
     hidForm();
     displayBook();
     console.log(myLibrary);
+    
 }
 function showForm(){
     form.style.display = "block";
@@ -55,14 +40,20 @@ function showForm(){
 function hidForm(){
     form.style.display = "none";
 }
+
+
 function displayBook(){
     display.textContent ="";
     for(let book of myLibrary){
         let newBook = document.createElement("div");
         newBook.classList.add("display-books");
-        newBook.innerText += book.title + book.author + book.pages + book.read;
+        newBook.innerHTML = `<p>${book.title}</p>
+                            <p>${book.author}</p> 
+                            <p>${book.pages}</p>
+                            <button>${book.read}</button>
+                            <button id="${book.title}" onclick="removeBook(this.id)">Remove</button>`;
+        //newBook.innerText += book.author + book.pages + book.read;
         display.appendChild(newBook);
-        
     }
 }
 
@@ -81,6 +72,19 @@ function resetForm(){
     pages.value = "";
     yes.checked = false;
     no.checked = false;
+}
+
+function removeBook(title){
+    let index = 0;
+    for(let i = 0; i<myLibrary.length;i++){
+        if(myLibrary[i].title === title){
+            index = i;
+        }
+    }
+
+    myLibrary.splice(index,1);
+    displayBook();
+    console.log(myLibrary);
 }
 displayBook();
 add.addEventListener("click",showForm);

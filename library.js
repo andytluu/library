@@ -100,10 +100,12 @@ function removeBook(title){
 function changeColor(read){
     const colorBtn = document.querySelector(`#${read}`);
     if(colorBtn.textContent === "read"){
-        colorBtn.style.backgroundColor = "green";
+        colorBtn.style.backgroundColor = "red";
+        colorBtn.textContent = "Not read";
     }
     else{
-        colorBtn.style.backgroundColor = "red";
+        colorBtn.style.backgroundColor = "green";
+        colorBtn.textContent = "read";
     }
 }
 displayBook();

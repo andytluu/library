@@ -44,13 +44,23 @@ function hidForm(){
 
 function displayBook(){
     display.textContent ="";
+    const red = "red";
+    const green = "green";
+    let state = "";
     for(let book of myLibrary){
+        if(book.read === "read"){
+            state = green;
+        }
+        else{
+            state = red;
+        }
         let newBook = document.createElement("div");
         newBook.classList.add("display-books");
         newBook.innerHTML = `<p>${book.title}</p>
                             <p>${book.author}</p> 
                             <p>${book.pages}</p>
-                            <button>${book.read}</button>
+                            <button id="${book.title}-color" onclick="changeColor(this.id)" 
+                            style="background-color:${state}">${book.read}</button>
                             <button id="${book.title}" onclick="removeBook(this.id)">Remove</button>`;
         //newBook.innerText += book.author + book.pages + book.read;
         display.appendChild(newBook);
@@ -85,6 +95,16 @@ function removeBook(title){
     myLibrary.splice(index,1);
     displayBook();
     console.log(myLibrary);
+}
+
+function changeColor(read){
+    const colorBtn = document.querySelector(`#${read}`);
+    if(colorBtn.textContent === "read"){
+        colorBtn.style.backgroundColor = "green";
+    }
+    else{
+        colorBtn.style.backgroundColor = "red";
+    }
 }
 displayBook();
 add.addEventListener("click",showForm);

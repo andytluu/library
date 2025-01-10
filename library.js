@@ -9,7 +9,17 @@ const pages = document.querySelector("#pages");
 const yes = document.querySelector("#yes");
 const no = document.querySelector("#no");
 const formBtn = document.querySelector("#form-button");
-function Book(title,author,pages,read) {
+
+class Book {
+    constructor(title,author,pages,read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+}
+
+/*function Book(title,author,pages,read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -21,7 +31,7 @@ function Book(title,author,pages,read) {
         );
     }
 
-}
+}*/
 
 function addBookToLibrary(){
     let read = checkRadio();
